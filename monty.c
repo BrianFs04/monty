@@ -48,8 +48,7 @@ int main(int argc, char **argv)
 		}
 		glop.nline++;
 	}
-	free(glop.buff);
-	fclose(glop.fd);
 	free_dlistint(glop.head);
+	fclose(glop.fd);
 	return (0);
 }
