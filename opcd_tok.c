@@ -42,6 +42,7 @@ void _strtok(char *str, stack_t **stack, unsigned int line_number)
 		if (!is_num(tk))
 		{
 			printf("L%d: usage: push integer\n", line_number);
+			free_glop();
 			exit(EXIT_FAILURE);
 		}
 		glop.num = atoi(tk);
