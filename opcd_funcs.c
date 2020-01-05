@@ -15,6 +15,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (new == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: malloc failed");
+		free_glop();
 		exit(EXIT_FAILURE);
 	}
 	new->n = glop.num;
@@ -58,9 +59,7 @@ void pint(stack_t **stack, unsigned int line_number)
 		dprintf(STDERR_FILENO,
 			"L%d: can't pint, stack empty\n", line_number);
 		free_dlistint(*stack);
-		free(glop.head);
-		free(glop.buff);
-		fclose(glop.fd);
+		free_glop();
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
@@ -79,6 +78,8 @@ void pop(stack_t **stack, unsigned int line_number)
 	{
 		dprintf(STDERR_FILENO, "L%d can't pop an empty stack\n",
 		       line_number);
+		free_dlistint(*stack);
+		free_glop();
 		exit(EXIT_FAILURE);
 	}
 	new = *stack;
@@ -99,10 +100,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't swap, stack too short\n",
 			line_number);
-		free_dlistint(*stack);
-		free(glop.head);
-		free(glop.buff);
-		fclose(glop.fd);
+		free_glop();
 		exit(EXIT_FAILURE);
 	}
 
