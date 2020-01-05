@@ -8,31 +8,21 @@ glova_t glop;
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new = malloc(sizeof(stack_t));
+	stack_t *new;
 
-	(void) line_number;
+	(void)line_number;
+	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: malloc failed");
-		free_dlistint(*stack);
-		fclose(glop.fd);
 		exit(EXIT_FAILURE);
 	}
+	new->n = glop.num;
+	new->prev = NULL;
+	new->next = *stack;
 	if (*stack != NULL)
-	{
-		new->n = glop.num;
 		(*stack)->prev = new;
-		new->prev = NULL;
-		new->next = *stack;
-		*stack = new;
-	}
-	else
-	{
-		new->n = glop.num;
-		new->prev = NULL;
-		new->next = *stack;
-		*stack = new;
-	}
+	*stack = new;
 }
 
 /**
@@ -43,12 +33,15 @@ void push(stack_t **stack, unsigned int line_number)
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-	(void) line_number;
+	stack_t *new;
 
-	while (*stack != NULL)
+	(void) line_number;
+	new = *stack;
+
+	while (new != NULL)
 	{
-		printf("%d\n", (*stack)->n);
-		*stack = (*stack)->next;
+		printf("%d\n", new->n);
+		new = new->next;
 	}
 }
 
@@ -80,16 +73,17 @@ void pint(stack_t **stack, unsigned int line_number)
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
+	stack_t *new;
+
 	if (stack == NULL || *stack == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%d can't pop an empty stack\n",
 		       line_number);
-		free_dlistint(*stack);
-		free(glop.head);
-		free(glop.buff);
-		fclose(glop.fd);
 		exit(EXIT_FAILURE);
 	}
+	new = *stack;
+	*stack = (*stack)->next;
+	free(new);
 }
 
 /**
