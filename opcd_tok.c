@@ -7,18 +7,17 @@ glova_t glop;
  */
 int is_num(char *n)
 {
-	int i = 0;
-
-	if (n[i] == '-')
+	if (n == NULL)
+		return (0);
+	if (*n == '-')
 	{
-		i++;
-		if (n[i] == '\0')
-			return (0);
+		n++;
 	}
-	for (; n[i]; i++)
+	while (*n != '\0')
 	{
-		if (isdigit(n[i]) == 0)
+		if (!isdigit(*n))
 			return (0);
+		n++;
 	}
 	return (1);
 }
@@ -34,7 +33,7 @@ void _strtok(char *str, stack_t **stack, unsigned int line_number)
 	char *tk, *toky;
 
 	tk = strtok(str, " ");
-	if (tk == NULL)
+	if (tk == NULL || *tk == ' ')
 		return;
 	if (strcmp(tk, "push") == 0)
 	{
@@ -43,7 +42,6 @@ void _strtok(char *str, stack_t **stack, unsigned int line_number)
 		if (!is_num(tk))
 		{
 			printf("L%d: usage: push integer\n", line_number);
-			free_dlistint(*stack);
 			exit(EXIT_FAILURE);
 		}
 		glop.num = atoi(tk);
