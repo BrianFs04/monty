@@ -81,7 +81,8 @@ void selector(char *op_str, stack_t **stack, unsigned int line_number);
 int is_num(char *n);
 void _strtok(char *str, stack_t **stack, unsigned int line_number);
 
-/* free_dlistint.c */
+/* frees.c */
 void free_dlistint(stack_t *head);
+void free_glop(void);
 
 #endif
