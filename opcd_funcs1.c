@@ -1,10 +1,10 @@
+#define GLOB
 #include "monty.h"
-glova_t glop;
 
 /**
  * add - adds the two top elements of the stack
- * @stack:
- * @line_number:
+ * @stack: pointer to the stack
+ * @line_number: line number
  */
 void add(stack_t **stack, unsigned int line_number)
 {

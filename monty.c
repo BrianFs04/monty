@@ -1,5 +1,5 @@
+#define GLOB
 #include "monty.h"
-glova_t glop;
 
 /**
  * glop_val - global variable values

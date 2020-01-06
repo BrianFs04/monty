@@ -1,5 +1,6 @@
+#define GLOB
 #include "monty.h"
-glova_t glop;
+
 /**
  * selector - structure
  * @op_str: received string

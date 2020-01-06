@@ -1,5 +1,6 @@
+#define GLOB
 #include "monty.h"
-glova_t glop;
+
 /**
  * free_dlistint - function that frees a doubly linked list
  * @head: Pointer to the first node of the list

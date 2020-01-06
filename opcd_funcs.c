@@ -1,5 +1,5 @@
+#define GLOB
 #include "monty.h"
-glova_t glop;
 
 /**
  * push - pushes an element to the stack

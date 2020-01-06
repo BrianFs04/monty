@@ -1,5 +1,6 @@
+#define GLOB
 #include "monty.h"
-glova_t glop;
+
 /**
  * is_num - checks if it's a num
  * @n: received character
