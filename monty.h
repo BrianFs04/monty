@@ -59,7 +59,11 @@ typedef struct glo_va
 	size_t size;
 } glova_t;
 
+#ifdef GLOB
+glova_t glop;
+#else
 extern glova_t glop;
+#endif
 
 /* monty.c */
 void glop_val(FILE *fd);
