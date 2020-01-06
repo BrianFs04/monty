@@ -10,7 +10,7 @@ void selector(char *op_str, stack_t **stack, unsigned int line_number)
 {
 	instruction_t sl[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint},
-		{"pop", pop}, {"swap", swap}, {"nop", nop},
+		{"pop", pop}, {"swap", swap}, {"add", add}, {"nop", nop},
 		{NULL, NULL}
 	};
 
