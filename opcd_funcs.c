@@ -56,8 +56,7 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	if (stack == NULL || *stack == NULL)
 	{
-		dprintf(STDERR_FILENO,
-			"L%u: can't pint, stack empty\n", line_number);
+		dprintf(2, "L%u: can't pint, stack empty\n", line_number);
 		free_dlistint(*stack);
 		free_glop();
 		exit(EXIT_FAILURE);
