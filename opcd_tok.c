@@ -42,7 +42,8 @@ void _strtok(char *str, stack_t **stack, unsigned int line_number)
 		tk = strtok(NULL, " ");
 		if (!is_num(tk))
 		{
-			printf("L%d: usage: push integer\n", line_number);
+			dprintf(STDERR_FILENO, "L%d: ", line_number);
+			dprintf(STDERR_FILENO, "usage: push integer\n");
 			free_glop();
 			exit(EXIT_FAILURE);
 		}
