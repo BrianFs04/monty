@@ -26,7 +26,8 @@ void selector(char *op_str, stack_t **stack, unsigned int line_number)
 		}
 		i++;
 	}
-	printf("L%d: unknown instruction %s\n", line_number, op_str);
+	dprintf(STDERR_FILENO, "L%d: ", line_number);
+	dprintf(STDERR_FILENO, "unknown instruction %s\n", op_str);
 	free_dlistint(*stack);
 	fclose(glop.fd);
 	exit(EXIT_FAILURE);
